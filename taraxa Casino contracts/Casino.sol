@@ -120,15 +120,5 @@ contract TaraxaCasino is Utility, Ownable{ //Ownable allows using onlyOwner modi
     	require(msg.value > 0, "No funds transfered");
 	}
 
-    function withdrawCasinoBalance(uint amount) external onlyOwner{
-    	address payable casino = address(uint160(address(this))); //conversion trick
-    	require(casino.balance >= amount, "Not enough balance");
-		msg.sender.transfer(amount);
-	}
-
-	function getCasinoBalance() external view onlyOwner returns(uint){
-		address payable casino = address(uint160(address(this))); //conversion trick
-		return casino.balance;
-	}
 
 }
